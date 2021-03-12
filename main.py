@@ -1,4 +1,4 @@
-merged_meeting_ranges = [(3, 5), (0, 1), (4, 8), (10, 12), (9, 10)]
+unsorted_meeting_ranges = [(3, 5), (0, 1), (4, 8), (10, 12), (9, 10)]
 
 def merge_sorted_arrays(arr1, arr2):
     min_arr, max_arr = (arr1, arr2) if len(arr1) < len(arr2) else (arr2, arr1)
@@ -25,13 +25,12 @@ def merge_sort(list):
     return merge_sorted_arrays(merge_sort(list[:len(list) // 2]),
                                merge_sort(list[len(list) // 2:]))
 
-print(merged_meeting_ranges)
-sorted_ranges = merge_sort(merged_meeting_ranges)
+print(unsorted_meeting_ranges)
+sorted_ranges = merge_sort(unsorted_meeting_ranges)
 
 def merge_ranges():
     if len(sorted_ranges) == 0:
         return
-
     final_ranges = []
 
     if len(final_ranges) == 0:
@@ -39,7 +38,7 @@ def merge_ranges():
         sorted_ranges.remove(sorted_ranges[0])
 
     while sorted_ranges:
-        if final_ranges[0] == sorted_ranges[0]:
+        if final_ranges[len(final_ranges) - 1] == sorted_ranges[0]:
             sorted_ranges.remove(sorted_ranges[0])
             continue
 
@@ -54,5 +53,5 @@ def merge_ranges():
     return final_ranges
 
 print(sorted_ranges)
-merged_meeting_ranges = merge_ranges()
-print(merged_meeting_ranges)
+unsorted_meeting_ranges = merge_ranges()
+print(unsorted_meeting_ranges)
